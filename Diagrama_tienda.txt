@@ -1,0 +1,52 @@
++------------------+      +------------------+      +-------------------+
+|    Clientes      |      |     Ventas       |      |   DetalleVenta     |
++------------------+      +------------------+      +-------------------+
+| id_cliente (PK)  | 1---*| id_venta (PK)    | *---1| id_detalle (PK)    |
+| nombre           |      | id_cliente (FK)  |      | id_venta (FK)      |
+| apellido         |      | id_empleado (FK) |      | id_producto (FK)   |
+| correo           |      | fecha_venta      |      | cantidad           |
+| telefono         |      | total            |      | precio_unitario    |
+| direccion        |      | metodo_pago      |      +-------------------+
+| fecha_registro   |      +------------------+          
++------------------+              
+        |                             
+        | 1                           
+        |                             
+        v                       
++-------------------+      +----------------+      +------------------+
+|   Productos       |      |   Categorias   |      |   Proveedores    |
++-------------------+      +----------------+      +------------------+
+| id_producto (PK)  | 1---*| id_categoria (PK)|    | id_proveedor (PK)|
+| nombre            |      | nombre_categoria |    | nombre_proveedor  |
+| descripcion       |      +-----------------+     | telefono          |
+| precio            |                              | direccion         |
+| cantidad_stock    |                              | correo            |
+| fecha_agregado    |                              +------------------+
+| id_categoria (FK)|
+| id_proveedor (FK) |
++-------------------+                                      
+        |                                    
+        |                                     
+        v                                 
++-------------------+      +-------------------+
+|   Inventarios     |      |   Devoluciones    |
++-------------------+      +-------------------+
+| id_inventario (PK)|      | id_devolucion (PK)|
+| id_producto (FK)  |      | id_venta (FK)     |
+| fecha_inventario  |      | id_producto (FK)  |
+| cantidad_entrante |      | cantidad          |
+| cantidad_saliente |      | fecha_devolucion  |
++-------------------+      | motivo_devolucion |
+                          | id_empleado (FK)   |
+                          +-------------------+
+
++-------------------+
+|     Empleados     |
++-------------------+
+| id_empleado (PK)  |
+| nombre            |
+| apellido          |
+| cargo             |
+| salario           |
+| fecha_contratacion|
++-------------------+
